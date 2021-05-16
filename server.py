@@ -16,4 +16,14 @@ def broadcast(message):
     for client in clients:
         client.send(message)
 
-def 
+def handle(client):
+    while True:
+        try:
+            message = client.recv(2024)
+            broadcast(message)
+        except:
+            index = clients.index(client)
+            clients.remove(client)
+            client.close()
+            nickname = nicknames[index]
+            nicknames.remove
